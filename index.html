@@ -38,28 +38,26 @@
         <td class="caption parameters">Parameters</td>
         <td class="panel-parameters">
             <div class="form-group">
-              <form>
-              <div class="input-group" id="datetimepicker1">
-                <input type="text" class="form-control" placeholder="from">
-                <input type="reset" id="reset">
-                <label class="reset" for="reset"></label>
-                <span class="input-group-addon">
-                </span>
-              </div>
-              </form>
+                <div class="input-group date" id="datetimepicker7">
+                   <form>
+                    <input type="text" class="form-control" placeholder="from"/>
+                    <input type="reset" id="reset">
+                    <label class="reset" for="reset"></label>
+                    </form>
+                    <span class="input-group-addon"></span>
+                </div>
             </div>
         </td>
         <td class="panel-parameters">
              <div class="form-group">
-              <form>
-              <div class="input-group" id="datetimepicker2">
-                <input type="text" class="form-control" placeholder="from">
-                <input type="reset" id="reset2">
-                <label class="reset" for="reset2"></label>
-                <span class="input-group-addon">
-                </span>
-              </div>
-              </form>
+                <div class="input-group date" id="datetimepicker8">
+                   <form>
+                    <input type="text" class="form-control" placeholder="before"/>
+                    <input type="reset" id="reset2">
+                    <label class="reset" for="reset2"></label>
+                    </form>
+                    <span class="input-group-addon"></span>
+                </div>
             </div>
             </td>
         <td class="caption">Growth</td>
@@ -311,14 +309,18 @@
   </div>
    </div>
    <script>
-  $(function () {
-    $('#datetimepicker1').datetimepicker();
-  });
-</script>
-   <script>
-  $(function () {
-    $('#datetimepicker2').datetimepicker();
-  });
+    $(function () {
+        $("#datetimepicker7").datetimepicker();
+        $("#datetimepicker8").datetimepicker({
+            useCurrent: false
+        });
+        $("#datetimepicker7").on("dp.change", function (e) {
+            $('#datetimepicker8').data("DateTimePicker").minDate(e.date);
+        });
+        $("#datetimepicker8").on("dp.change", function (e) {
+            $('#datetimepicker7').data("DateTimePicker").maxDate(e.date);
+        });
+    });
 </script>
     </body>
 </html>
